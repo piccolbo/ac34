@@ -48,42 +48,36 @@ This isn't so interesting *per se* but you need to keep an eye on it to read the
 
 By promoting speed from a color scale to a more perceptually precise spatial scale, we can gain new insights, like the remarkable speed difference between the two teams rounding mark 2 (in yellow) , how scattered is the final run for USA compared to the tight cluster of points for NZL (in purple) and how more consistent are jybe speeds for NZL. In favor of USA, we can see slightly faster speeds through the tacks.
 
-
-
-
-
-
-
 The problem with this visualization is in the tight clusters of points, that is the straight line mode. It'hard to detect the density of points, that is the time a boat has spent traveling at a certain speed. So let's now drop the indidual data points. In the next graph, the density of color red is proportional to the time spent sailing at a certain point of sail and speed. 
 
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
 
 
-We can see that, upwind, USA seems to travel a bit more close hauled whereas NZ is a little faster. Impossible to tell by eye who has the best compromise. On the donwind side, particularly on starboard, NZL seems to travel as if on tracks, with a very tight cluster of points, probably due to longer starboard tacks. Now for a final set of graphics, we focus on speed and point of sail separately. But since speed without direction does not a race win, let's switch to RVMG. And to avoid mixing apples and oranges, let's try to analyze straight line speed vs speed in the turns. I made up a "turn test" based on boat heading 10 second moving averages. The next graphics confirms that the test and  intuition mostly agree on what a turn is.
+We can see that, upwind, USA seems to travel a bit more close hauled whereas NZ is a little faster. Impossible to tell by eye who achieved the best compromise. On the donwind side, particularly on starboard, NZL seems to travel as if on tracks, with a very tight cluster of points, probably due to longer starboard tacks. Now for a final set of graphics, we focus on speed and point of sail separately. But since speed without direction does not a race win, let's switch to RVMG. And to avoid mixing apples and oranges, let's try to analyze straight line speed vs speed in the turns. I made up a "turn test" based on boat heading 10 second moving averages. The next graphics confirms that the test and  intuition mostly agree on what a turn is.
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
 
 
 With that available, we can now look at the frequency of different points of sail. A density plot in polar coordinates may look unfamiliar, but the meaning is pretty simple: the furthest a line is from the center, the longer a boat has spent traveling at that point of sail. The first plot is for boats going in a straight line.
 
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
 
 
 What we see is that indeed USA sails a bit more close hauled both upwind and downwind. But does it pay off in terms of RVMG? In the next plot, negative RVMG is just RVMG downwind.
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 
 It seems that it does upwind, but not downwind. And what about the turns?
 
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
 
-
-Well, it looks like the tacks are pretty even, contrary to the impression created by a previous graphics. Maybe just the worse NZL tack was worse, but overall they seem even with their opponent. 
+Well, it looks like the tacks are pretty even, contrary to the impression created by a previous graphics. Maybe just the worse NZL tack was worse, but overall they seem even with their opponent. But they seem to have a slight edge on the jybes, which makes sense because they were the first team to foil (fly over the water) and therefore to practice the foiling jybe, a turn performed keeping both hulls out of the water.
 
 ## Materials and Methods
 
-These article was composed in [RStudio](http://rstudio.org), using the rhe R-extended  language, a mix of the [R programming language](http://r-project.org) and the [markdown](http://markdown.org) markup language integrated with the package [knitr](http://knitr.org). The pretty graphics are made possible by the [ggplot2](http://ggplot2.had.co.nz) package. The code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The data is made available by the [America's cup](http://americascup.com) organization. 
+These article was composed in [RStudio](http://rstudio.org), using the rhe R-extended  language, a mix of the [R programming language](http://r-project.org) and the [markdown](http://daringfireball.net/projects/markdown/) markup language integrated with the package [knitr](http:/yihui.name/knitr/
+g). The pretty graphics are made possible by the [ggplot2](http://had.co.nz/ggplot2) package. The code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The [data](http://noticeboard.americascup.com/Race-Data/) is made available by the [America's cup](http://americascup.com) organization. 
 

@@ -38,7 +38,8 @@ r10ss = subset(r10, round(Secs * 10) %%1000 == 500 )
 
 I wanted to build some high density graphics that showed the crucial events of the race. Some of answers offered by the graphics would need to be confirmed more rigorously with a confidence interval but we will stop short of that in this article. The first is going to be based on the position of the boats and this is what happens just plotting longitude and latitude of the boats, captured 5 times per second:
 
-```{r fig.width = 5, fig.height=5}
+```{r fig.width = 7, fig.height = 5}
+theme_set(theme_bw())
 ggplot(
 	r10, 
 	aes(
@@ -46,12 +47,11 @@ ggplot(
 		Lat, 
 		col = Boat)) +
 	geom_point()
-
 ```
 
 Since the race goes back and forth three times in between two gates, the overlap of the yachts' trajectories makes this first visualization hard to read, so I decided to mirror the Longitude every time the sailboats reach a mark (sailing speak for turn around point). Imagine the race course as a folded piace of paper and the visualization as its unfolded version, with the creases in the north-south direction at the marks. Speed is important, so I decided to use color to represent speed. Since in sailing "fast" is only relative to the wind, I learned to use the ratio of boat speed to wind speed from America's Cup commentators, accomplished sailors Gary Jobson and Ken Read. On the day of Race 10 this ranged between 0.5 on some not-so-good tacks (upwind turns), when the boat is briefly traveling against the wind, to 2.7. Symbols are used to represent the teams. A nice side effect of this is that the symbols show the position of the boats at regular time intervals, suggesting which one is ahead particularly near a cross. In sailing, speed is not everything: equally important is angle w.r.t the wind, since sailboats can't go straight upwind and can go straight downwind only paying a crippling speed penalty, and the course is roughly aligned with the wind. Eventually what matters is a combination of speed and angle which is called *velocity made good*, or VMG. As for raw speed, what a good VMG is depends on the intensity of the wind, so it makes sense to take the ratio of VMG and wind speed, which I call *relative VMG* or RVMG. In the following graphics, this is expressed as thickness of the line. It is somewhat redundant as we have direction and speed information already, but it's a convenience. To summarize, the following graphics shows the trajectory of the two boats with the twist that the race course is replicated three times and mirrored as needed to avoid overlaps; color is speed and thickness is RVMG. The symbols identify the boats and their position at regular time intervals. 
 
-``` {r fig.width = 21, fig.height = 7, tidy = FALSE}
+``` {r fig.width = 15, fig.height = 5, tidy = FALSE}
 ggplot(
 	r10, 
 	aes(
@@ -81,14 +81,13 @@ ggplot(
 		Lat, 
 		col = min)) +
 	rainbow +
-	geom_point() 
+geom_point() 
 ```
 
 This isn't so interesting *per se* but you need to keep an eye on it to read the next graphics, where time is represented by the same color scale. The next graphics is focused on speed and direction w.r.t the wind, what sailors call *point of sail*. In polar coordinates, imagine the wind coming from above and the boat with its *stern* (rear end) in the center and its *bow* (front) pointing out. The labels are the traditional names for different points of sail: *in irons* (against the wind), *closed haul* (almost against the wind) and so forth. The distance from the center is boat speed relative to the wind. Color represents time and going back and forth to and from the previous graphic you can associate the different colors with various phases of the race. Each point represents a speed and direction reading, repeated five times a second and each boat has a separate panel. As you can see, the points are not randomly scattered. Boats tend to stay on a course that gives them the best VMG most of the time. The biggest exceptions are the blue and purple clusters, which are the beginning and final stretches of the race, which are oriented at almost 90 degrees to the wind and as such VMG doesn't matter here, only speed. So the main six clusters are port and starboard tack, port and startboard jybe and the two final reaches. In between these we see connecting lines: roughly horizontal we have tacks (upper half) and jybes (lower half); vertically we have mark roundings. There's a few lines of dots that don't fit any of the above: the acceleration from the start in red and a few "tactical" situation such as NZL zig-zagging before mark 3 (in blue-green) and USA ducking deep (green), how scattered the final run is for USA compared to the tight cluster of points for NZL (in purple) and how more consistent are jybe speeds for NZL. In favor of USA, we can see slightly faster speeds through the tacks.
 
 ```{r}
-points.of.sail = c("In Irons", "Close Hauled", "Close Reach", "Beam Reach", "Broad Reach", "Running", "Running", "Running", "Broad Reach", "Beam Reach", "Close Reach", "Close Hauled")
-p.o.s = abbreviate(points.of.sail)
+points.of.sail = c("In Irons", "Close\nHauled", "Close\nReach", "Beam\nReach", "Broad\nReach", "Running", "Running", "Running", "Broad\nReach", "Beam\nReach", "Close\nReach", "Close\nHauled")
 scale.x = 
 	scale_x_continuous(
 		name = "Point of Sail", 
@@ -109,39 +108,10 @@ ggplot(
 		color = min)) +
 	scale.x + scale.y + coord_polar() +
 	rainbow +
-	geom_jitter(alpha = .2) + 
+	geom_jitter() + 
 	facet_grid(.~Boat)
 ```
 By promoting speed from a color scale to a more perceptually precise spatial scale, we can gain new insights, like the remarkable speed difference between the two teams rounding mark 2 (in yellow) , how scattered is the final run for USA compared to the tight cluster of points for NZL (in purple) and how more consistent are jybe speeds for NZL. In favor of USA, we can see slightly faster speeds through the tacks.
-
-``` {r fig.width = 21, fig.height = 11, tidy = FALSE}
-# ggplot(
-# 	r10, 
-# 	aes(
-# 		point.of.sail, 
-# 		abs(RVMG), 
-# 		color = min)) +
-# 	scale.x + coord_polar() +
-# 	rainbow +
-# 	geom_jitter(alpha = .2) + 
-#	facet_grid(.~Boat)
-```
-
-``` {r fig.width = 21, fig.height = 11, tidy = FALSE}
-#ggplot(
-# 	r10, 
-# 	aes(
-# 		point.of.sail, 
-# 		ifelse(
-# 			pmin(abs(point.of.sail - 90),abs(point.of.sail - 270)) < 30,
-# 			.5 * multiple.wind.speed, 
-# 			abs(RVMG)),
-# 		color = min)) +
-# 	scale.x + coord_polar() +
-# 	rainbow +
-# 	geom_jitter(alpha = .2) + 
-#	facet_grid(.~Boat)
-```
 
 The problem with this visualization is in the tight clusters of points, that is the straight line mode. It'hard to detect the density of points, that is the time a boat has spent traveling at a certain speed. So let's now drop the indidual data points. In the next graph, the density of color red is proportional to the time spent sailing at a certain point of sail and speed. 
 
@@ -158,9 +128,9 @@ ggplot(
 	facet_grid(.~Boat)
 ```
 
-We can see that, upwind, USA seems to travel a bit more close hauled whereas NZ is a little faster. Impossible to tell by eye who has the best compromise. On the donwind side, particularly on starboard, NZL seems to travel as if on tracks, with a very tight cluster of points, probably due to longer starboard tacks. Now for a final set of graphics, we focus on speed and point of sail separately. But since speed without direction does not a race win, let's switch to RVMG. And to avoid mixing apples and oranges, let's try to analyze straight line speed vs speed in the turns. I made up a "turn test" based on boat heading 10 second moving averages. The next graphics confirms that the test and  intuition mostly agree on what a turn is.
+We can see that, upwind, USA seems to travel a bit more close hauled whereas NZ is a little faster. Impossible to tell by eye who achieved the best compromise. On the donwind side, particularly on starboard, NZL seems to travel as if on tracks, with a very tight cluster of points, probably due to longer starboard tacks. Now for a final set of graphics, we focus on speed and point of sail separately. But since speed without direction does not a race win, let's switch to RVMG. And to avoid mixing apples and oranges, let's try to analyze straight line speed vs speed in the turns. I made up a "turn test" based on boat heading 10 second moving averages. The next graphics confirms that the test and  intuition mostly agree on what a turn is.
 
-```{r}
+```{r fig.width = 9, fig.height = 3}
 r10 = transform(r10, turn = abs(diff0(filter(Hdg, rep(.02, 50)))) > 0.2)
 ggplot(r10, aes(LonUnfolded, Lat, color = turn)) + geom_point()
 ```
@@ -170,7 +140,8 @@ With that available, we can now look at the frequency of different points of sai
 ``` {r}
 r10sl = subset(r10,  !turn)
 ggplot(r10sl, aes(point.of.sail, color = Boat)) + 
-	scale.x + coord_polar() +
+	scale.x + 
+	coord_polar() +
 	geom_density(adjust = 0.2)
 ```
 
@@ -182,15 +153,15 @@ ggplot(r10sl, aes(RVMG, color = Boat)) + geom_density()
 
 It seems that it does upwind, but not downwind. And what about the turns?
 
-
 ```{r}
 r10tr = subset(r10, turn)
 ggplot(r10tr, aes(RVMG, color = Boat)) + geom_density()
 ```
 
-Well, it looks like the tacks are pretty even, contrary to the impression created by a previous graphics. Maybe just the worse NZL tack was worse, but overall they seem even with their opponent. 
+Well, it looks like the tacks are pretty even, contrary to the impression created by a previous graphics. Maybe just the worse NZL tack was worse, but overall they seem even with their opponent. But they seem to have a slight edge on the jybes, which makes sense because they were the first team to foil (fly over the water) and therefore to practice the foiling jybe, a turn performed keeping both hulls out of the water.
 
 ## Materials and Methods
 
-These article was composed in [RStudio](http://rstudio.org), using the rhe R-extended  language, a mix of the [R programming language](http://r-project.org) and the [markdown](http://markdown.org) markup language integrated with the package [knitr](http://knitr.org). The pretty graphics are made possible by the [ggplot2](http://ggplot2.had.co.nz) package. The code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The data is made available by the [America's cup](http://americascup.com) organization. 
+These article was composed in [RStudio](http://rstudio.org), using the rhe R-extended  language, a mix of the [R programming language](http://r-project.org) and the [markdown](http://daringfireball.net/projects/markdown/) markup language integrated with the package [knitr](http:/yihui.name/knitr/
+g). The pretty graphics are made possible by the [ggplot2](http://had.co.nz/ggplot2) package. The code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The [data](http://noticeboard.americascup.com/Race-Data/) is made available by the [America's cup](http://americascup.com) organization. 
 
