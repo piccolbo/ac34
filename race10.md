@@ -31,7 +31,7 @@ Since the race goes back and forth three times in between two gates, the overlap
 ![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 
 
-If you watched this fantastic race, hailed  as one of the greatest sailing contests ever, you can see all of its decisive moments in this graphic. The race started with a very fast reach, with team New Zealand (NZL) pushing team USA (USA) wide at the first mark rounding. USA has a difficult *jybe* (turn going downwind) as their line turn green, unlike NZL's. The two boats go in sync down to mark 2, with USA following a closer angle for one tack &mdash; maybe a wind shift, that's where having on board data would help. At the Mark USA goes for a complicated manouver to obtain a split &mdash; a split is always preferred by the chaser, as these boats always leave disturbed air behind them, irrespective of wind; such is their speed &mdash; but the manouver costs them dearly in boat speed. In the upwind leg, the boats seem happy to criss-cross paths as the leader doesn't make a defensive tack over their opponent, probably mindful that a similar move cost them almost a capsize in a previous race. The problem is that tacks require a lot of work and the crews can only produce so many tacks before getting exhausted. Peaks in speed at the crossings show the boat on port tack taking evasive manouver to avoid collision, while the one on starboard tack, with the right of way, tries to make it hard on the other boat, but there were no clear *dial downs* as in other races, when the right of way boat takes aim at the other. Right before mark 3, the two boats part ways: USA ducks deeply behind NZL whereas NZL slows down heading upwind and goes into the mark rounding with a zig-zag. USA speed seems to suffer after the last jybe and they go into the dowind leg with a slight deficit, but with the split. At the first cross, a decision looms between ducking (and losing ground) or jybing (losing the split). As USA tactician Ainslie later exlained, neither looks good, and they duck. NZL is clear at their next crossing and, without major errors, the race is over. USA fails to keep the pressure up though with a poor last mark rounding. 
+If you watched this fantastic race, hailed  as one of the greatest sailing contests ever, you can see all of its decisive moments in this graphic. The race started with a very fast reach, with team New Zealand (NZL) pushing team USA (USA) wide at the first mark rounding. USA has a difficult *jybe* (turn going downwind) as their line turn green, unlike NZL's. The two boats go in sync down to mark 2, with USA following a closer angle for one tack &mdash; maybe a wind shift, that's where having on board data would help. At the Mark USA goes for a complicated manouver to obtain a split &mdash; a split is always preferred by the chaser, as these boats always leave disturbed air behind them, irrespective of wind; such is their speed &mdash; but the manouver costs them dearly in boat speed. In the upwind leg, the boats seem happy to criss-cross paths as the leader doesn't make a defensive tack over their opponent, probably mindful that a similar move cost them almost a capsize in a previous race. The problem is that tacks require a lot of work and the crews can only produce so many tacks before getting exhausted. Peaks in speed at the crossings show the boat on port tack taking evasive manouver to avoid collision, while the one on starboard tack, with the right of way, tries to make it hard on the other boat, but there were no clear *dial downs* as in other races, when the right of way boat takes aim at the other. Right before mark 3, the two boats part ways: USA ducks deeply behind NZL whereas NZL slows down heading upwind and goes into the mark rounding with a zig-zag. USA speed seems to suffer after the last jybe and they go into the dowind leg with a slight deficit, but with the split. At the first cross, a decision looms between ducking (and losing ground) or jybing (losing the split). As USA tactician Ainslie later exlained, neither looks good, and they duck. NZL is clear ahead at their next crossing and, without major errors, the race is over. USA fails to keep the pressure up though with a poor last mark rounding. 
 
 Now I would like to transition into a different, more abstract visualization, but before doing that I need to show a version of the previous graphics with color representing time.
 
@@ -65,12 +65,12 @@ We can see that, upwind, USA seems to travel a bit more close hauled whereas NZ 
 ![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 
-With that available, we can now look at the frequency of different points of sail. A density plot in polar coordinates may look unfamiliar, but the meaning is pretty simple: the furthest a line is from the center, the longer a boat has spent traveling at that point of sail.
+With that available, we can now look at the frequency of different points of sail. A density plot in polar coordinates may look unfamiliar, but the meaning is pretty simple: the furthest a line is from the center, the longer a boat has spent traveling at that point of sail. The first plot is for boats going in a straight line.
 
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 
 
-What we see is that indeed USA sails a bit more close hauled both upwind and downwind. But does it pay off  in terms of RVMG? In the next plot, negative RVMG is just RVMG downwind.
+What we see is that indeed USA sails a bit more close hauled both upwind and downwind. But does it pay off in terms of RVMG? In the next plot, negative RVMG is just RVMG downwind.
 
 ![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
 
@@ -81,7 +81,9 @@ It seems that it does upwind, but not downwind. And what about the turns?
 ![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
 
 
-Well, it looks like the tacks are pretty even, contrary to the impression create by a previous graphics. Maybe just the worse NZL tack was worse, but overall they seem even with their opponent. 
+Well, it looks like the tacks are pretty even, contrary to the impression created by a previous graphics. Maybe just the worse NZL tack was worse, but overall they seem even with their opponent. 
 
 ## Materials and Methods
+
+These article was composed in [RStudio](http://rstudio.org), using the rhe R-extended  language, a mix of the [R programming language](http://r-project.org) and the [markdown](http://markdown.org) markup language integrated with the package [knitr](http://knitr.org). The pretty graphics are made possible by the [ggplot2](http://ggplot2.had.co.nz) package. The code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The data is made available by the [America's cup](http://americascup.com) organization. 
 
