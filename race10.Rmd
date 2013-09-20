@@ -164,6 +164,5 @@ I will readly admit this graphical analysis largely confirms what the experience
 
 ## Materials and Methods
 
-These article was composed in [RStudio](http://rstudio.org), using the rhe R-extended  language, a mix of the [R programming language](http://r-project.org) and the [markdown](http://daringfireball.net/projects/markdown/) markup language integrated with the package [knitr](http:/yihui.name/knitr/
-g). The pretty graphics are made possible by the [ggplot2](http://had.co.nz/ggplot2) package. The source code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The [data](http://noticeboard.americascup.com/Race-Data/) is made available by the [America's cup](http://americascup.com) organization. 
+These article was composed in [RStudio](http://rstudio.org), using R markdown, a mix of the [R programming language](http://r-project.org) and the [markdown](http://daringfireball.net/projects/markdown/) markup language integrated with the package [knitr](http:/yihui.name/knitr/). The pretty graphics are made possible by the [ggplot2](http://had.co.nz/ggplot2) package. The source code is available on [github](https://github.com/piccolbo/ac34/blob/master/race10.Rmd). The [data](http://noticeboard.americascup.com/Race-Data/) is made available by the [America's cup](http://americascup.com) organization. 
 
