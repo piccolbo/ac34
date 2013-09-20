@@ -3,3 +3,5 @@
 .RData
 *.html
 ac34.Rproj
+
+cache/
