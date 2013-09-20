@@ -114,7 +114,7 @@ ggplot(
 ```
 By promoting speed from a color scale to a more perceptually precise spatial scale, we can gain new insights, like the remarkable speed difference between the two teams rounding mark 2 (in yellow) , how scattered the final run is for USA compared to the tight cluster of points for NZL (in purple) and how more consistent are jibe speeds for NZL. In favor of USA, we may see slightly faster speeds through the tacks, but a different graphics later doesn't confirm this.
 
-The problem with this visualization is in the tight clusters of points, that is straight line travel. It's hard to see the density of points, that is the time a boat has spent traveling at a certain speed and point of sail. So let's now drop the individual data points. In the next graph, the density of color red is proportional to the time spent sailing at a certain point of sail and speed. It's a more static view of the race with emphasis on the normal modes of sailing and less on the episodes and outliers. 
+The problem with this visualization is in the tight clusters of points, that is straight line travel. It's hard to see the density of points, since they overlap. So let's now drop the individual data points. In the next graph, the density of color red is proportional to the time spent sailing at a certain point of sail and speed. It's a more static view of the race with emphasis on the normal modes of sailing and less on the episodes and outliers. 
 
 
 ``` {r fig.width = 21, fig.height = 11,  tidy = FALSE}
