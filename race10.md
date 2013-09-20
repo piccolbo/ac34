@@ -70,7 +70,7 @@ What we see is that indeed USA sails a bit more close hauled both upwind and dow
 ![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 
-It seems that USA a slight advantage upwind, but the opposite is true downwind. Remarkable, as the beginning of the contest was characterized by NZL's upwind superiority. If only USA engineers had applied earlier the changes made halfway through the contest, USA would have had a much better shot at the trophy. Now let's take a look at the turns.
+It seems that USA enjoys a slight advantage upwind, but the opposite is true downwind. Remarkable, as the beginning of the contest was characterized by NZL's upwind superiority. If only USA engineers had applied earlier the changes made halfway through the contest, USA would have had a much better shot at the trophy. Now let's take a look at the turns.
 
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 

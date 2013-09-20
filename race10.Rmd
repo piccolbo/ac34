@@ -152,7 +152,7 @@ What we see is that indeed USA sails a bit more close hauled both upwind and dow
 ggplot(r10sl, aes(RVMG, color = Boat)) + geom_density()
 ```
 
-It seems that USA a slight advantage upwind, but the opposite is true downwind. Remarkable, as the beginning of the contest was characterized by NZL's upwind superiority. If only USA engineers had applied earlier the changes made halfway through the contest, USA would have had a much better shot at the trophy. Now let's take a look at the turns.
+It seems that USA enjoys a slight advantage upwind, but the opposite is true downwind. Remarkable, as the beginning of the contest was characterized by NZL's upwind superiority. If only USA engineers had applied earlier the changes made halfway through the contest, USA would have had a much better shot at the trophy. Now let's take a look at the turns.
 
 ```{r}
 r10tr = subset(r10, turn)
